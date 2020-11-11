@@ -27,7 +27,7 @@ public class MenuState extends State{
         font.getData().setScale(0.15f);
         font.setUseIntegerPositions(false);
 
-        background = new Texture("artwork/main_landing_screen.png");
+        background = new Texture("artwork/main_landing2.png");
         playStork = new Texture("artwork/spaceman.png");
         stop = new Texture("artwork/stop.png");
     }
@@ -37,12 +37,14 @@ public class MenuState extends State{
         if(Gdx.input.justTouched()) {
             Vector3 v = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             v = cam.unproject(v);
-            if(v.y < 20) {
+            // numbers are percents
+            if(v.y > 1 && v.y < 12) {
                 if(v.x > 10 && v.x < 20) {
-
+                    // High score
                 } else if (v.x > 30 && v.x < 40) {
-
+                    // Second button
                 } else if (v.x > 45 && v.x < 55) {
+                    // Play button
                     gsm.set(new PlayState(gsm, cam, viewport, stage));
                     dispose();
                 } else if (v.x > 65 && v.x < 70) {
@@ -66,7 +68,7 @@ public class MenuState extends State{
 
         sb.begin();
         sb.draw(background, 0 , 0, 100, 100);
-        sb.draw(playStork, 10 , 20, 80, 80);
+        sb.draw(playStork, 18 , 30, 65, 65);
         if (!prefs.isSoundActive()) {
             sb.draw(stop, 63, 4, 12, 17);
         }

@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.first.game.util.Prefs;
 
-public class Stork {
+public class Spaceman {
 
     private static final int GRAVITY = -5;
     private static final int MOVEMENT = 0;
@@ -39,7 +39,7 @@ public class Stork {
 //        return storkAnimation.getTextureRegion();
     }
 
-    public Stork(int x, int y) {
+    public Spaceman(int x, int y) {
 
         prefs = new Prefs();
 
