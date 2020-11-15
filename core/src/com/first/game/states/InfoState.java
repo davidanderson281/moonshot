@@ -58,10 +58,10 @@ public class InfoState extends State {
         sb.begin();
         sb.draw(background,0,0, 100,100);
 
+        font.draw(sb,"RACE TO THE MOON", 25,scrollY - 20);
+        font.draw(sb,"by DivAnder Studios", 22,scrollY - 40);
         font.draw(sb,"Source Code Available on Github", 10,scrollY - 70);
-
         font.draw(sb,"Please donate to support us!", 12,scrollY - 90);
-
         font.draw(sb,"Thank You!", 35,scrollY - 110);
 
         sb.end();
