@@ -43,7 +43,7 @@ public class PlayState extends State {
         prefs = new Prefs();
 
         if (prefs.isSoundActive()) {
-            background = Gdx.audio.newMusic(Gdx.files.internal("audio/background16.wav"));
+            background = Gdx.audio.newMusic(Gdx.files.internal("audio/background.mp3"));
             background.setLooping(true);
             background.play();
         }
@@ -56,7 +56,7 @@ public class PlayState extends State {
         font = new BitmapFont(Gdx.files.internal("fonts/abel.fnt"), Gdx.files.internal("fonts/abel.png"), false);
         font.setUseIntegerPositions(false);
         font.getData().setScale(0.15f);
-        textures.add(new Texture("artwork/night_bg.png"));
+        textures.add(new Texture("artwork/night_bg2.png"));
         textures.get(textures.size - 1).setWrap(Texture.TextureWrap.ClampToEdge, Texture.TextureWrap.ClampToEdge);
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(cam.combined);
