@@ -1,10 +1,9 @@
-package com.first.game;
+package com.first.gamedemomoonshot;
 
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.first.game.Moonshot;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

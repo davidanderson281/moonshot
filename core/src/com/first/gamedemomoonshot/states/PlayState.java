@@ -1,7 +1,6 @@
-package com.first.game.states;
+package com.first.gamedemomoonshot.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,9 +13,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.first.game.elements.CollectibleOrbs;
-import com.first.game.sprites.Spaceman;
-import com.first.game.util.Prefs;
+import com.first.gamedemomoonshot.elements.CollectibleOrbs;
+import com.first.gamedemomoonshot.sprites.Spaceman;
+import com.first.gamedemomoonshot.util.Prefs;
 
 public class PlayState extends State {
     private Spaceman spaceman;
@@ -68,7 +67,7 @@ public class PlayState extends State {
 //        Gdx.app.debug("Stage:", stage.getActors().size + "");
 
         if (stage.getActors().size == 0) {
-            ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
+            com.first.gamedemomoonshot.states.ParallaxBackground parallaxBackground = new com.first.gamedemomoonshot.states.ParallaxBackground(textures, cam);
             parallaxBackground.setSize(cam.viewportWidth, cam.viewportHeight);
             parallaxBackground.setSpeed(1);
             stage.addActor(parallaxBackground);
@@ -92,11 +91,11 @@ public class PlayState extends State {
                 score = 0;
 
                 stage.clear();
-                ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
+                com.first.gamedemomoonshot.states.ParallaxBackground parallaxBackground = new com.first.gamedemomoonshot.states.ParallaxBackground(textures, cam);
                 parallaxBackground.setSize(cam.viewportWidth, cam.viewportHeight);
                 parallaxBackground.setSpeed(1);
                 stage.addActor(parallaxBackground);
-                gsm.set(new MenuState(gsm, cam, viewport, stage));
+                gsm.set(new com.first.gamedemomoonshot.states.MenuState(gsm, cam, viewport, stage));
                 dispose();
             }
 
@@ -108,7 +107,7 @@ public class PlayState extends State {
             } else if (PAUSED && (v.y > 50 && v.y < 63) && (v.x > 40 && v.x < 60)) {
                 PAUSED = false;
                 stage.clear();
-                ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
+                com.first.gamedemomoonshot.states.ParallaxBackground parallaxBackground = new com.first.gamedemomoonshot.states.ParallaxBackground(textures, cam);
                 parallaxBackground.setSize(cam.viewportWidth, cam.viewportHeight);
                 parallaxBackground.setSpeed(1);
                 stage.addActor(parallaxBackground);
@@ -169,7 +168,7 @@ public class PlayState extends State {
             font.draw(sb,"Exit", 46,43);
             sb.end();
             stage.clear();
-            ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
+            com.first.gamedemomoonshot.states.ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
             parallaxBackground.setSize(cam.viewportWidth, cam.viewportHeight);
             parallaxBackground.setSpeed(0);
             stage.addActor(parallaxBackground);

@@ -1,18 +1,17 @@
-package com.first.game;
+package com.first.gamedemomoonshot;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.first.game.states.GameStateManager;
-import com.first.game.states.MenuState;
-import com.first.game.util.Prefs;
+import com.first.gamedemomoonshot.states.GameStateManager;
+import com.first.gamedemomoonshot.states.MenuState;
+import com.first.gamedemomoonshot.util.Prefs;
 
 public class Moonshot extends ApplicationAdapter {
 	public static final int HEIGHT = 100;
@@ -20,12 +19,12 @@ public class Moonshot extends ApplicationAdapter {
 	public static final float SPEED = 0.1f;
 
 	public static final String TITLE="Moon Shot";
-	private GameStateManager gsm;
+	private com.first.gamedemomoonshot.states.GameStateManager gsm;
 	private SpriteBatch batch;
 	OrthographicCamera cam;
 	Viewport viewport;
 	Stage stage;
-	Prefs prefs;
+	com.first.gamedemomoonshot.util.Prefs prefs;
 
 	@Override
 	public void create () {

@@ -1,4 +1,4 @@
-package com.first.game.states;
+package com.first.gamedemomoonshot.states;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public abstract class State {
-    protected GameStateManager gsm;
+    protected com.first.gamedemomoonshot.states.GameStateManager gsm;
 
     protected OrthographicCamera cam;
     protected Viewport viewport;

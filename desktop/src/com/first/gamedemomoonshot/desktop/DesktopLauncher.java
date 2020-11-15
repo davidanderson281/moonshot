@@ -1,8 +1,8 @@
-package com.first.game.desktop;
+package com.first.gamedemomoonshot.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.first.game.Moonshot;
+import com.first.gamedemomoonshot.Moonshot;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

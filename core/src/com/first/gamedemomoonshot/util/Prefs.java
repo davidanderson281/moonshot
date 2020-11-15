@@ -1,4 +1,4 @@
-package com.first.game.util;
+package com.first.gamedemomoonshot.util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;

@@ -1,12 +1,11 @@
-package com.first.game.sprites;
+package com.first.gamedemomoonshot.sprites;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-import com.first.game.util.Prefs;
+import com.first.gamedemomoonshot.util.Prefs;
 
 public class Spaceman {
 

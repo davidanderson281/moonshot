@@ -1,4 +1,4 @@
-package com.first.game.states;
+package com.first.gamedemomoonshot.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
