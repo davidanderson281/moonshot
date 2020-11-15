@@ -11,9 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.first.game.util.Prefs;
 
 public class MenuState extends State{
-    private Texture background;
-    private Texture playStork;
-    private Texture stop;
+    private Texture background, playStork, stop, buttonTex;
     private BitmapFont font;
     private Prefs prefs;
 
@@ -27,9 +25,10 @@ public class MenuState extends State{
         font.getData().setScale(0.15f);
         font.setUseIntegerPositions(false);
 
-        background = new Texture("artwork/main_landing2.png");
+        background = new Texture("artwork/main_landing.png");
         playStork = new Texture("artwork/spaceman.png");
         stop = new Texture("artwork/stop.png");
+        buttonTex = new Texture(Gdx.files.internal("artwork/button.png"));
     }
 
     @Override
@@ -37,19 +36,20 @@ public class MenuState extends State{
         if(Gdx.input.justTouched()) {
             Vector3 v = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             v = cam.unproject(v);
-            // numbers are percents
-            if(v.y > 1 && v.y < 12) {
-                if(v.x > 10 && v.x < 20) {
+            if(v.y > 3 && v.y < 15) {
+                if(v.x > 5 && v.x < 20) {
                     // High score
-                } else if (v.x > 30 && v.x < 40) {
+                } else if (v.x > 24 && v.x < 39) {
                     // Second button
-                } else if (v.x > 45 && v.x < 55) {
+                } else if (v.x > 43 && v.x < 58) {
                     // Play button
                     gsm.set(new PlayState(gsm, cam, viewport, stage));
                     dispose();
-                } else if (v.x > 65 && v.x < 70) {
+                } else if (v.x > 62 && v.x < 77) {
+                    // Sound button
                     prefs.setSound(!prefs.isSoundActive());
-                } else if (v.x > 80 && v.x < 90) {
+                } else if (v.x > 80 && v.x < 95) {
+                    // Info button
                     gsm.set(new InfoState(gsm, cam, viewport, stage));
                     dispose();
                 }
@@ -69,10 +69,20 @@ public class MenuState extends State{
         sb.begin();
         sb.draw(background, 0 , 0, 100, 100);
         sb.draw(playStork, 18 , 30, 65, 65);
+        sb.draw(buttonTex, 5, 3, 15, 12);
+        sb.draw(buttonTex, 24, 3, 15, 12);
+        sb.draw(buttonTex, 43, 3, 15, 12);
+        sb.draw(buttonTex, 62, 3, 15, 12);
+        sb.draw(buttonTex, 80, 3, 15, 12);
+        font.draw(sb,"N/A", 9,10);
+        font.draw(sb,"N/A", 28,10);
+        font.draw(sb,"Play", 46, 10);
+        font.draw(sb,"Sound", 64,10);
+        font.draw(sb,"Info", 84,10);
         if (!prefs.isSoundActive()) {
-            sb.draw(stop, 63, 4, 12, 17);
+            sb.draw(stop, 63, 4, 12, 10);
         }
-        font.draw(sb, "Press play to start", 30, 30);
+        font.draw(sb, "Press play to start", 30, 25);
         sb.end();
     }
 

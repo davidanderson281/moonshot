@@ -28,8 +28,6 @@ public class PlayState extends State {
     private static int lives;
     private long startTime;
     private Music background;
-    private AssetManager assetManager;
-    private long background_audio_id;
     private Boolean AudioStarted = false;
     public Prefs prefs;
     private ShapeRenderer shapeRenderer;
@@ -88,20 +86,26 @@ public class PlayState extends State {
             v = cam.unproject(v);
 
 
-            if (PAUSED && (v.y > 42 && v.y < 56) && (v.x > 38 && v.x < 54)) {
+            if (PAUSED && (v.y > 35 && v.y < 48) && (v.x > 40 && v.x < 60)) {
                 PAUSED = false;
                 lives = 5;
                 score = 0;
 
+                stage.clear();
+                ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
+                parallaxBackground.setSize(cam.viewportWidth, cam.viewportHeight);
+                parallaxBackground.setSpeed(1);
+                stage.addActor(parallaxBackground);
                 gsm.set(new MenuState(gsm, cam, viewport, stage));
                 dispose();
             }
 
             if (v.y > 80 && v.x > 90 && !PAUSED) {
+                // Pause button
                 PAUSED = true;
             } else if (!PAUSED) {
                 spaceman.fly();
-            } else {
+            } else if (PAUSED && (v.y > 50 && v.y < 63) && (v.x > 40 && v.x < 60)) {
                 PAUSED = false;
                 stage.clear();
                 ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
@@ -158,9 +162,11 @@ public class PlayState extends State {
             shapeRenderer.end();
             Gdx.gl.glDisable(GL20.GL_BLEND);
             sb.begin();
-            sb.draw(buttonTex, 45, 50, 20, 20);
-//            font.draw(sb,"Touch Anywhere to Continue", 20,10);
-//            font.draw(sb,"EXIT?", 45,50);
+            font.draw(sb,"Game paused", 37,80);
+            sb.draw(buttonTex, 40, 50, 20, 13);
+            sb.draw(buttonTex, 40, 35, 20, 13);
+            font.draw(sb,"Resume", 42,58);
+            font.draw(sb,"Exit", 46,43);
             sb.end();
             stage.clear();
             ParallaxBackground parallaxBackground = new ParallaxBackground(textures, cam);
