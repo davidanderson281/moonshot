@@ -11,11 +11,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.first.gamedemomoonshot.util.Prefs;
 
 public class MenuState extends State{
-    private Texture background, playStork, stop, buttonTex;
-    private BitmapFont font;
-    private Prefs prefs;
-
-    private static Boolean PAUSED = false;
+    private final Texture background, playStork, stop, buttonTex;
+    private final BitmapFont font;
+    private final Prefs prefs;
 
     public MenuState(GameStateManager gsm, OrthographicCamera cam, Viewport viewport, Stage stage) {
         super(gsm, cam, viewport, stage);
@@ -38,9 +36,13 @@ public class MenuState extends State{
             v = cam.unproject(v);
             if(v.y > 3 && v.y < 15) {
                 if(v.x > 5 && v.x < 20) {
-                    // High score
+                    // How to play button
+                    gsm.set(new HowToState(gsm, cam, viewport, stage));
+                    dispose();
                 } else if (v.x > 24 && v.x < 39) {
-                    // Second button
+                    // High score button
+                    gsm.set(new HighScoreState(gsm, cam, viewport, stage));
+                    dispose();
                 } else if (v.x > 43 && v.x < 58) {
                     // Play button
                     gsm.set(new PlayState(gsm, cam, viewport, stage));
@@ -49,7 +51,7 @@ public class MenuState extends State{
                     // Sound button
                     prefs.setSound(!prefs.isSoundActive());
                 } else if (v.x > 80 && v.x < 95) {
-                    // Info button
+                    // About button
                     gsm.set(new InfoState(gsm, cam, viewport, stage));
                     dispose();
                 }
@@ -74,15 +76,15 @@ public class MenuState extends State{
         sb.draw(buttonTex, 43, 3, 15, 12);
         sb.draw(buttonTex, 62, 3, 15, 12);
         sb.draw(buttonTex, 80, 3, 15, 12);
-        font.draw(sb,"N/A", 9,10);
-        font.draw(sb,"N/A", 28,10);
-        font.draw(sb,"Play", 46, 10);
-        font.draw(sb,"Sound", 64,10);
-        font.draw(sb,"Info", 84,10);
+        font.draw(sb,"Help", 8,10.5f);
+        font.draw(sb,"Scores", 25,10.5f);
+        font.draw(sb,"Play", 47, 10.5f);
+        font.draw(sb,"Sound", 64,10.5f);
+        font.draw(sb,"About", 82.5f,10.5f);
         if (!prefs.isSoundActive()) {
-            sb.draw(stop, 63, 4, 12, 10);
+            sb.draw(stop, 63, 4, 13, 10);
         }
-        font.draw(sb, "Press play to start", 30, 25);
+//        font.draw(sb, "Press play to start", 30, 25);
         sb.end();
     }
 

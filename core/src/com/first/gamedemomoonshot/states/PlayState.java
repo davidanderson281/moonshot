@@ -142,13 +142,13 @@ public class PlayState extends State {
         sb.end();
 
         sb.begin();
-        font.draw(sb, "Score: " + getScore(), 30, 95);
+        font.draw(sb, "Score: " + getScore(), 40, 95);
         sb.end();
 
         sb.begin();
 
         sb.draw(lifeTex, 2, 90, 5, 7);
-        font.draw(sb, "X " + lives, 8, 95);
+        font.draw(sb, "" + lives, 8, 95);
 
         sb.end();
 
@@ -174,8 +174,8 @@ public class PlayState extends State {
             stage.addActor(parallaxBackground);
         } else {
             sb.begin();
-            font.draw(sb, " Time : " + getPlayTime(), 55, 95);
-            sb.draw(pauseTex, 92, 90, 5, 5);
+            font.draw(sb, "" + getPlayTime(), 74, 95);
+            sb.draw(pauseTex, 92, 91, 5, 5);
 
             sb.end();
         }

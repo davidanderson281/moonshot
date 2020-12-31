@@ -6,49 +6,41 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class InfoState extends State {
-    private Texture background;
-    private Texture playStork;
-
-
+    private Texture background, crossIcon;
     private BitmapFont font;
-    static int scrollY = 0;
-    static Boolean interpolator = false;
 
     public InfoState(GameStateManager gsm, OrthographicCamera cam, Viewport viewport, Stage stage) {
         super(gsm,cam, viewport, stage);
 
-        playStork = new Texture("artwork/spaceman.png");
-
         font = new BitmapFont(Gdx.files.internal("fonts/abel.fnt"), Gdx.files.internal("fonts/abel.png"), false);
         font.getData().setScale(0.2f);
-        font.setColor(Color.BLACK);
+        font.setColor(Color.WHITE);
         font.setUseIntegerPositions(false);
-        background = new Texture("artwork/info_screen.png");
-
+        background = new Texture("artwork/main_landing.png");
+        crossIcon = new Texture("artwork/cross_icon.png");
     }
+
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched() ) {
-            gsm.set(new MenuState(gsm, cam, viewport, stage));
-            dispose();
+            Vector3 v = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            v = cam.unproject(v);
+
+            if (v.y > 92 && v.x > 92) {
+                gsm.set(new MenuState(gsm, cam, viewport, stage));
+                dispose();
+            }
         }
     }
 
     @Override
     public void update(float dt) {
         handleInput();
-        interpolator=!interpolator;
-
-        if(interpolator)
-            scrollY += 1;
-
-        if(scrollY >= 220){
-            scrollY = -85;
-        }
     }
 
     @Override
@@ -57,12 +49,13 @@ public class InfoState extends State {
 
         sb.begin();
         sb.draw(background,0,0, 100,100);
+        sb.draw(crossIcon,94, 94, 5, 5);
 
-        font.draw(sb,"RACE TO THE MOON", 25,scrollY - 20);
-        font.draw(sb,"by DivAnder Studios", 22,scrollY - 40);
-        font.draw(sb,"Source Code Available on Github", 10,scrollY - 70);
-        font.draw(sb,"Please donate to support us!", 12,scrollY - 90);
-        font.draw(sb,"Thank You!", 35,scrollY - 110);
+        font.draw(sb,"RACE TO THE MOON", 25,90);
+        font.draw(sb,"by DivAnder Studios", 24,70);
+        font.draw(sb,"Source Code Available on Github", 10,50);
+        font.draw(sb,"Please donate to support us!", 12,30);
+        font.draw(sb,"Thank You!", 35,10);
 
         sb.end();
     }
@@ -76,6 +69,5 @@ public class InfoState extends State {
     public void dispose() {
         background.dispose();
         font.dispose();
-        playStork.dispose();
     }
 }

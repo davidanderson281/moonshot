@@ -10,21 +10,17 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class HowToState extends State {
+public class HighScoreState extends State {
     private Texture background, crossIcon;
-    private BitmapFont headerFont, paragraphFont;
+    private BitmapFont headerFont;
 
-    public HowToState(GameStateManager gsm, OrthographicCamera cam, Viewport viewport, Stage stage) {
+    public HighScoreState(GameStateManager gsm, OrthographicCamera cam, Viewport viewport, Stage stage) {
         super(gsm,cam, viewport, stage);
 
         headerFont = new BitmapFont(Gdx.files.internal("fonts/abel.fnt"), Gdx.files.internal("fonts/abel.png"), false);
         headerFont.getData().setScale(0.3f);
         headerFont.setColor(Color.WHITE);
         headerFont.setUseIntegerPositions(false);
-        paragraphFont = new BitmapFont(Gdx.files.internal("fonts/abel.fnt"), Gdx.files.internal("fonts/abel.png"), false);
-        paragraphFont.getData().setScale(0.15f);
-        paragraphFont.setColor(Color.WHITE);
-        paragraphFont.setUseIntegerPositions(false);
         background = new Texture("artwork/main_landing.png");
         crossIcon = new Texture("artwork/cross_icon.png");
     }
@@ -55,11 +51,7 @@ public class HowToState extends State {
         sb.draw(background,0,0, 100,100);
         sb.draw(crossIcon,94, 94, 5, 5);
 
-        headerFont.draw(sb,"How to play", 25,90);
-        paragraphFont.draw(sb,"Tap the screen to lift spaceman", 17,62);
-        paragraphFont.draw(sb,"Collect the gold coins to gain points", 13,50);
-        paragraphFont.draw(sb,"For every ten points you gain a life", 15,38);
-        paragraphFont.draw(sb,"Lose a life for collecting a red coin", 15,26);
+        headerFont.draw(sb,"Coming soon", 25,90);
 
         sb.end();
     }
@@ -73,6 +65,5 @@ public class HowToState extends State {
     public void dispose() {
         background.dispose();
         headerFont.dispose();
-        paragraphFont.dispose();
     }
 }
